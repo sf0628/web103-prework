@@ -40,7 +40,7 @@ function ViewCreatorPage() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className="view-creator-content">
+        <div className="view-creator">
             <button className="back-button" onClick={handleClickBackButton}>Back</button>
             {creator ? (
                 <Card creator={creator}/>

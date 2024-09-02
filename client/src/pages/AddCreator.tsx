@@ -9,14 +9,40 @@ function AddCreatorPage() {
     const [description, setDescription] = useState<string>("");
     const [imageURL, setImageURL] = useState<string>("");
     const [modal, setModal] = useState<boolean>(false);
+    const [message, setMessage] = useState<string | null>(null); // Renamed from errorMessage to message
 
     const toggleModal = () => {
         setModal(!modal);
     };
+    
+    const handleClickHome = () => {
+        toggleModal
+        navigate('/')
+    }
 
     const handleAddCreator = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        // Check if the URL is unique
+        const { data: existingCreators, error: queryError } = await supabase
+            .from('creators')
+            .select('*')
+            .eq('url', url);
+
+        if (queryError) {
+            console.error("Error checking URL uniqueness:", queryError.message);
+            setMessage("An error occurred while checking the URL.");
+            toggleModal();
+            return;
+        }
+
+        if (existingCreators && existingCreators.length > 0) {
+            setMessage("The URL is already in use. Please provide a different one.");
+            toggleModal();
+            return;
+        }
+
+        // Insert new creator into Supabase
         const { data, error } = await supabase
             .from("creators")
             .insert([
@@ -25,14 +51,17 @@ function AddCreatorPage() {
 
         if (error) {
             console.error("Error adding creator:", error.message);
+            setMessage("An error occurred while adding the creator.");
         } else {
             console.log("Creator added successfully:", data);
             setName("");
             setUrl("");
             setDescription("");
             setImageURL("");
-            toggleModal(); // Toggle the modal after adding the creator
+            setMessage("Creator successfully added!");
         }
+
+        toggleModal();
     };
 
     return (
@@ -86,13 +115,14 @@ function AddCreatorPage() {
                 <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
-                        <h2>Creator succesfully added!</h2>
+                        <h2>{message}</h2>
                         <button className="close-modal" onClick={toggleModal}>
                             X
                         </button>
-                        <button className="back-button" onClick={() => navigate(-1)}>Home</button>
+                        {message === "Creator successfully added!" && (
+                            <button className="back-button" onClick={handleClickHome}>Home</button>
+                        )}
                     </div>
-                    
                 </div>
             )}
         </div>

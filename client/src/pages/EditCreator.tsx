@@ -57,7 +57,7 @@ function EditCreatorPage() {
             console.error("Error editing creator:", error.message);
         } else {
             console.log("Creator edited successfully:", data);
-            toggleModal(); // Toggle the modal after editing the creator
+            toggleModal();
         }
     };
 

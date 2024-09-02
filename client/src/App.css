@@ -1,5 +1,26 @@
 html, body {
-    background-color: rgb(39, 39, 39);}
+    background-color: rgb(39, 39, 39);
+}
+
+.add-creator, .edit-creator, .show-creator, .view-creator {
+    margin: 20px;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, li, a, span, div {
+    color: rgb(211, 210, 210);
+}
+
+button {
+    background-color: rgb(211, 210, 210);
+}
+
+input {
+    background-color: #ccc; /* Light grey background */
+    color: black; /* Text color inside the input */
+    border: 1px solid #888; /* Optional: grey border */
+    margin: 5px;
+}
 
 /* Card Component */
 .card-content, .creator-tile {
