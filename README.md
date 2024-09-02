@@ -3,9 +3,9 @@
 Submitted by: Sophia Fu
 
 About this web app: This web app allows users to view, edit, and add their favorite creators. This includes anything from
-Twitch streams, to Tiktokers.
+Twitch streams to Tiktokers.
 
-Time spent: 6 hours
+Time spent: 7 hours
 
 ## Required Features
 
