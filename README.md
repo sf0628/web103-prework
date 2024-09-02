@@ -32,7 +32,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-![prework-gif](https://github.com/user-attachments/assets/07dfc324-0976-4e04-8b7d-d849023dccd1)
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f63cc19e-ba5b-4176-95cd-8ff435371593)
 
 ## Notes
 
